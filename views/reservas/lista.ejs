@@ -1,0 +1,30 @@
+<header class="cabecera-pagina">
+    <div>
+        <p class="etiqueta"><%= seccion %></p>
+        <h1><%= titulo %></h1>
+    </div>
+
+    <a class="boton" href="/reservas/nueva">Nueva Reserva</a>
+</header>
+<!-- Si el arrary de reservas tiene una longitud de 0 muestra el mensaje no hay reservas-->
+ <% if(reservas.length === 0) {%> 
+    <p>No hay reservas registradas</p>
+ <% } else { %>
+    <section class="grilla" aria-label="reservas registradas">
+        <!--Vamos a iterar en cada objeto reserva y extrae sus datos-->
+        <% reservas.forEach((reserva) =>{%>
+            <article class="tarjeta">
+                <h2><%= reserva.estudiante %></h2>
+                <p><%= reserva.email %></p>
+                <p><%= reserva.sala %></p>
+                <p><%= reserva.fecha %></p> 
+                <p><%= reserva.turno %></p>
+                <p><%= reserva.personas %> persona(s)</p>
+                <br>
+                <a class="card-btn" href="/reservas/<%= reserva.id %>">Mas datos</a>
+                
+            </article>
+             
+       <% }) %>
+    </section>
+ <% } %>
