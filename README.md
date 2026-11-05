@@ -116,6 +116,38 @@ Puerto alternativo - Estado: 200 - Responde el puerto configurado
 Puerto inválido - Estado: No inicia. 
 
 ## Formato y análisis estático
+* npm install --save-dev prettier eslint @eslint/js
+* Agregar scripts sin borrar los existentes:
+{
+  "scripts": {
+    "start": "node src/index.js",
+    "start:local": "node --env-file=.env src/index.js",
+    "format": "prettier --write src",
+    "format:check": "prettier --check src",
+    "lint": "eslint src",
+    "check": "npm run format:check && npm run lint"
+  }
+}
+
+* eslint.config.js para CommonJS:
+const js = require("@eslint/js");
+module.exports = [
+  {
+    files: ["src/**/*.js"],
+    ...js.configs.recommended,
+    languageOptions: {
+      sourceType: "commonjs",
+      globals: {
+        __dirname: "readonly",
+        console: "readonly",
+        module: "readonly",
+        process: "readonly",
+        require: "readonly",
+      },
+    },
+  },
+];
+
 * npm run format
 
 > format
