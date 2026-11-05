@@ -1,14 +1,14 @@
 let numeroDeSolicitud = 0;
 
 //middleware que registra el numero de solicitudes
-function identificarSolicitud(req, res, next) {    
-    numeroDeSolicitud += 1;
-    res.locals.solicitudId = `BIB-000${String(numeroDeSolicitud)}`;
-    console.log(
-      `identificarSolicitud : [${res.locals.solicitudId}] ${req.method} ${req.originalUrl}`,
-    );
-    next();
-  }
+function identificarSolicitud(req, res, next) {
+  numeroDeSolicitud += 1;
+  res.locals.solicitudId = `BIB-000${String(numeroDeSolicitud)}`;
+  console.log(
+    `identificarSolicitud : [${res.locals.solicitudId}] ${req.method} ${req.originalUrl}`,
+  );
+  next();
+}
 
 //middleware que permite medir cuanto tarda una solicitud
 function medirDuracion(req, res, next) {
@@ -23,4 +23,4 @@ function medirDuracion(req, res, next) {
   next();
 }
 
-module.exports = {identificarSolicitud, medirDuracion};
+module.exports = { identificarSolicitud, medirDuracion };

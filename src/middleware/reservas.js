@@ -17,7 +17,7 @@ function validarReserva(req, res, next) {
 
   const datosValidos =
     estudiante &&
-    email.includes('@') &&
+    email.includes("@") &&
     salasPermitidas.includes(sala) &&
     fecha &&
     turnosPermitidos.includes(turno) &&
@@ -34,8 +34,8 @@ function validarReserva(req, res, next) {
     });
   }
 
-  req.reservaValidada = { estudiante, email, sala, fecha, turno, personas};
+  req.reservaValidada = { estudiante, email, sala, fecha, turno, personas };
   next();
 }
 
-module.exports = {prepararAreaReservas, validarReserva};
+module.exports = { prepararAreaReservas, validarReserva };

@@ -1,26 +1,28 @@
 function crearServicioReservas(datosIniciales) {
-    const reservas = [...datosIniciales];
+  const reservas = [...datosIniciales];
 
-    function listar() {
-        return [...reservas];
-    }
+  function listar() {
+    return [...reservas];
+  }
 
-    function contar() {
-        return reservas.length;
-    }
+  function contar() {
+    return reservas.length;
+  }
 
-    function crear(datosValidados) {
-        const utlimoId = reservas.reduce((mayor, reserva) => Math.max(mayor, reserva.id), 0,);
+  function crear(datosValidados) {
+    const utlimoId = reservas.reduce(
+      (mayor, reserva) => Math.max(mayor, reserva.id),
+      0,
+    );
 
-        const nueva = {id: utlimoId + 1, ...datosValidados};
+    const nueva = { id: utlimoId + 1, ...datosValidados };
 
-        reservas.push(nueva);
+    reservas.push(nueva);
 
-        return nueva;
-    }
+    return nueva;
+  }
 
-
-    return {listar, contar, crear};
+  return { listar, contar, crear };
 }
 
-module.exports = {crearServicioReservas};
+module.exports = { crearServicioReservas };

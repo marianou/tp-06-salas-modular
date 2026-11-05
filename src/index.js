@@ -1,7 +1,6 @@
-const {leerConfiguracion} = require("./configuracion"); 
-const {crearServicioReservas} = require("./servicios/reservas");
-const {crearApp} = require("./app");
-
+const { leerConfiguracion } = require("./configuracion");
+const { crearServicioReservas } = require("./servicios/reservas");
+const { crearApp } = require("./app");
 
 const reservas = [
   {
@@ -39,33 +38,19 @@ const reservas = [
     fecha: "2026-10-29",
     turno: "Tarde",
     personas: 6,
-  }
+  },
 ];
 
 try {
-  const {puerto, formatoRegistro} = leerConfiguracion();
-  const serviciosReservas =  crearServicioReservas(reservas);
+  const { puerto, formatoRegistro } = leerConfiguracion();
+  const serviciosReservas = crearServicioReservas(reservas);
 
-  const app = crearApp({serviciosReservas, formatoRegistro}); 
+  const app = crearApp({ serviciosReservas, formatoRegistro });
 
-  app.listen(puerto, () =>{
+  app.listen(puerto, () => {
     console.log(`Disponible en http://localhost:${puerto}`);
   });
 } catch (error) {
   console.error("no se pudo iniciar la aplicación", error);
   process.exitCode = 1;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
